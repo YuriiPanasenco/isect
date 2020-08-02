@@ -817,10 +817,10 @@ function createEventQueue(byY) {
  */
 
 // This is used for precision checking (e.g. two numbers are equal
-// if their difference is smaller than this number). The value is 
+// if their difference is smaller than this number). The value is
 // chosen empirically. We still may run into precision related issues.
 // TODO: we should allow consumers to configure this.
-var EPS = 1e-9;//10;
+var EPS = 1e-4;//10;
 
 function getIntersectionXPoint(segment, xPos, yPos) {
   var dy1 = segment.from.y - yPos;
@@ -836,13 +836,13 @@ function getIntersectionXPoint(segment, xPos, yPos) {
     }
     return segment.from.x;
   }
-  
-  var dx = (segment.to.x - segment.from.x); 
-  var xOffset; 
+
+  var dx = (segment.to.x - segment.from.x);
+  var xOffset;
   if (dy1 >= dy2) {
-    xOffset = dy1 * (dx / dy); 
+    xOffset = dy1 * (dx / dy);
     return (segment.from.x - xOffset);
-  } 
+  }
   xOffset = dy2 * (dx / dy);
   return (segment.to.x + xOffset);
 }
